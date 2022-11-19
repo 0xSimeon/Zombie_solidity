@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.17;
 
-contract ZombieFactory {
+contract Zombie {
 
     // declare our event here
     event NewZombie(uint zombieId, string name, uint dna);
@@ -10,15 +10,15 @@ contract ZombieFactory {
     uint dnaDigits = 16;
     uint dnaModulus = 10 ** dnaDigits;
 
-    struct Zombie {
+    struct ZombieMarkup {
         string name;
         uint dna;
     }
 
-    Zombie[] public zombies;
+    ZombieMarkup[] public zombies;
 
     function _createZombie(string memory _name, uint _dna) private {
-        zombies.push(Zombie(_name, _dna));
+        zombies.push(ZombieMarkup(_name, _dna));
         // and fire it here
         uint id = zombies.length - 1; 
         emit NewZombie(id, _name, _dna);
